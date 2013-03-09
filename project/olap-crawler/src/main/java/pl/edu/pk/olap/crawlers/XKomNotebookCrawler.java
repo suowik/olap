@@ -1,5 +1,7 @@
 package pl.edu.pk.olap.crawlers;
 
+import org.jsoup.nodes.Document;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Paweł
@@ -15,4 +17,10 @@ public class XKomNotebookCrawler extends AbstractNotebookCrawler {
     protected String getPageRegexp() {
         return ".*-notebook-.*|.*-netbook-.*|.*-ultrabook-.*";
     }
+
+    @Override
+    protected void parse(Document document) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
 }

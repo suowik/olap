@@ -1,5 +1,7 @@
 package pl.edu.pk.olap.crawlers;
 
+import org.jsoup.nodes.Document;
+
 /**
  * Date: 09.03.13
  * Time: 17:34
@@ -13,4 +15,10 @@ public class SaturnNotebookCrawler extends AbstractNotebookCrawler {
     protected String getPageRegexp() {
         return ".*notebook.*|.*ultrabook.*|.*netbook.*";
     }
+
+    @Override
+    protected void parse(Document document) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
 }

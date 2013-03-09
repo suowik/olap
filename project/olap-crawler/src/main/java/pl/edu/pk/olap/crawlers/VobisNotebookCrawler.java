@@ -1,5 +1,7 @@
 package pl.edu.pk.olap.crawlers;
 
+import org.jsoup.nodes.Document;
+
 /**
  * User: Paweł
  * Date: 09.03.13
@@ -29,4 +31,10 @@ public class VobisNotebookCrawler extends AbstractNotebookCrawler {
     protected String getPageRegexp() {
         return ".*notebook-.*|.*netbook-.*|.*ultrabook-.*";
     }
+
+    @Override
+    protected void parse(Document document) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
 }
