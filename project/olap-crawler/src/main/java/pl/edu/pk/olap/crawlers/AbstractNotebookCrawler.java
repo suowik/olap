@@ -34,7 +34,7 @@ public abstract class AbstractNotebookCrawler extends WebCrawler {
     public void visit(Page page) {
         if(page.getParseData() instanceof HtmlParseData){
             HtmlParseData html = (HtmlParseData) page.getParseData();
-            LOGGER.info("NOTEBOOK: "+html.getTitle());
+            LOGGER.debug("NOTEBOOK: "+html.getTitle());
             parse(Jsoup.parse(html.getHtml()));
         }
     }

@@ -1,24 +1,29 @@
 package pl.edu.pk.olap;
 
-import pl.edu.pk.olap.runners.*;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
+import pl.edu.pk.olap.quartz.CrawlingJob;
 
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-        //executor.execute(new KomputronikRunner());
-        //executor.execute(new EuroRunner());
-        //executor.execute(new VobisRunner());
-        executor.execute(new MediaMarktRunner());
-        //executor.execute(new SaturnRunner());
-        //executor.execute(new XKomRunner());
-        executor.shutdown();
-        while (!executor.isTerminated());
+        try {
+            JobDetail job = JobBuilder.newJob(CrawlingJob.class).withIdentity("CrawlingJob","group1").build();
+            Trigger crawlingTrigger = TriggerBuilder.newTrigger()
+                                            .startNow()
+                                            .withIdentity("CrawlingTrigger","group1")
+                                            .withSchedule(SimpleScheduleBuilder
+                                                            .simpleSchedule()
+                                                            .withIntervalInHours(2).repeatForever())
+                                            .build();
+            Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+            scheduler.start();
+            scheduler.scheduleJob(job, crawlingTrigger);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
         System.out.println("DONE");
     }
 }

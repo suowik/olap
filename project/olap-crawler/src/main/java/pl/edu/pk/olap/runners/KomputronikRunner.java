@@ -14,7 +14,7 @@ import pl.edu.pk.olap.crawlers.controller.CrawlerController;
 public class KomputronikRunner implements Runnable {
     @Override
     public void run() {
-        CrawlerController crawlerController = new CrawlerController(20, "komputronik/",100000, CrawlerController.ONE_SEC/2);
+        CrawlerController crawlerController = new CrawlerController(40, "komputronik/",100000, CrawlerController.ONE_SEC);
         crawlerController.crawl(KomputronikNotebookCrawler.class, KomputronikNotebookCrawler.LINKS);
     }
 }
