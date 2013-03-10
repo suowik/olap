@@ -1,14 +1,11 @@
 package pl.edu.pk.olap.crawlers;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Paweł
  * Date: 09.03.13
  * Time: 20:06
- * To change this template use File | Settings | File Templates.
  */
 public class KomputronikNotebookCrawler extends AbstractNotebookCrawler {
 
@@ -22,8 +19,9 @@ public class KomputronikNotebookCrawler extends AbstractNotebookCrawler {
     }
 
     @Override
-    protected void parse(Document document) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    protected ParseStrategy getStrategy() {
+        return null;
     }
+
 
 }

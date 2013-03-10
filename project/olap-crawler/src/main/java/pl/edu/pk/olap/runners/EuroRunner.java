@@ -4,11 +4,9 @@ import pl.edu.pk.olap.crawlers.EuroNotebookCrawler;
 import pl.edu.pk.olap.crawlers.controller.CrawlerController;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Paweł
  * Date: 09.03.13
  * Time: 18:10
- * To change this template use File | Settings | File Templates.
  */
 public class EuroRunner implements Runnable {
     @Override

@@ -1,6 +1,6 @@
 package pl.edu.pk.olap.crawlers;
 
-import org.jsoup.nodes.Document;
+import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
 
 /**
  * Date: 09.03.13
@@ -17,8 +17,9 @@ public class SaturnNotebookCrawler extends AbstractNotebookCrawler {
     }
 
     @Override
-    protected void parse(Document document) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    protected ParseStrategy getStrategy() {
+        return null;
     }
+
 
 }

@@ -14,16 +14,16 @@ import org.apache.log4j.Logger;
  */
 public class CrawlerController {
     public static final int ONE_SEC = 1000;
-    public static final String DEFAULT_STORAGE = "data/crawl/root";
+    private static final String DEFAULT_STORAGE = "data/crawl/root";
     private final static Logger LOGGER = Logger.getLogger(CrawlerController.class);
-    private int numberOfCrawlers;
+    private final int numberOfCrawlers;
     private CrawlController controller;
 
-    public CrawlerController(int numberOfCrawlers, int pagesToFetch) {
+    private CrawlerController(int numberOfCrawlers, int pagesToFetch) {
         this(numberOfCrawlers, DEFAULT_STORAGE, pagesToFetch, ONE_SEC);
     }
 
-    public CrawlerController(int numberOfCrawlers, int pagesToFetch, int delay) {
+    private CrawlerController(int numberOfCrawlers, int pagesToFetch, int delay) {
         this(numberOfCrawlers, DEFAULT_STORAGE, pagesToFetch, delay);
     }
 

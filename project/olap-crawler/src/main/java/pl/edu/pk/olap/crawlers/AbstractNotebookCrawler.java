@@ -7,6 +7,11 @@ import edu.uci.ics.crawler4j.url.WebURL;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import pl.edu.pk.olap.context.ParsingContext;
+import pl.edu.pk.olap.dto.Computer;
+import pl.edu.pk.olap.exceptions.DocumentParseException;
+import pl.edu.pk.olap.parsers.NotebookParser;
+import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
 
 import java.util.regex.Pattern;
 
@@ -15,7 +20,7 @@ import java.util.regex.Pattern;
  * Date: 09.03.13
  * Time: 15:56
  */
-public abstract class AbstractNotebookCrawler extends WebCrawler {
+abstract class AbstractNotebookCrawler extends WebCrawler {
 
     private final static Logger LOGGER = Logger.getLogger(AbstractNotebookCrawler.class);
 
@@ -39,6 +44,18 @@ public abstract class AbstractNotebookCrawler extends WebCrawler {
         }
     }
 
+    void parse(Document document) {
+        try {
+            Computer computer = NotebookParser.parse(document, getStrategy());
+            ParsingContext.add(computer);
+        } catch (DocumentParseException e) {
+            e.printStackTrace();
+            LOGGER.warn("COULD NOT ADD COMPUTER DUE TO: "+e);
+        }
+    }
+
     protected abstract String getPageRegexp();
-    protected abstract void parse(Document document);
+
+    protected abstract ParseStrategy getStrategy();
+
 }

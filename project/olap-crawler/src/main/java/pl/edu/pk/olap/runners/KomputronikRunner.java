@@ -1,7 +1,6 @@
 package pl.edu.pk.olap.runners;
 
 import pl.edu.pk.olap.crawlers.KomputronikNotebookCrawler;
-import pl.edu.pk.olap.crawlers.SaturnNotebookCrawler;
 import pl.edu.pk.olap.crawlers.controller.CrawlerController;
 
 /**
