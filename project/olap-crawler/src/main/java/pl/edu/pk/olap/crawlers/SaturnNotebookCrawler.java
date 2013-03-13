@@ -1,6 +1,7 @@
 package pl.edu.pk.olap.crawlers;
 
 import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
+import pl.edu.pk.olap.parsers.strategy.SaturnParseStrategy;
 
 /**
  * Date: 09.03.13
@@ -18,8 +19,6 @@ public class SaturnNotebookCrawler extends AbstractNotebookCrawler {
 
     @Override
     protected ParseStrategy getStrategy() {
-        return null;
+        return new SaturnParseStrategy();
     }
-
-
 }

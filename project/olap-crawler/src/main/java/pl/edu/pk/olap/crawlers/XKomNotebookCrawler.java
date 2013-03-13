@@ -1,6 +1,7 @@
 package pl.edu.pk.olap.crawlers;
 
 import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
+import pl.edu.pk.olap.parsers.strategy.XKomParseStrategy;
 
 /**
  * User: Paweł
@@ -18,7 +19,7 @@ public class XKomNotebookCrawler extends AbstractNotebookCrawler {
 
     @Override
     protected ParseStrategy getStrategy() {
-        return null;
+        return new XKomParseStrategy();
     }
 
 }

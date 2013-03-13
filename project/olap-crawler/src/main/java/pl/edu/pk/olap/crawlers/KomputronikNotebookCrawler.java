@@ -1,5 +1,6 @@
 package pl.edu.pk.olap.crawlers;
 
+import pl.edu.pk.olap.parsers.strategy.KomputronikParseStrategy;
 import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
 
 /**
@@ -15,12 +16,12 @@ public class KomputronikNotebookCrawler extends AbstractNotebookCrawler {
 
     @Override
     protected String getPageRegexp() {
-        return ".*Laptopy_i_netbooki.*".toLowerCase();
+        return ".*laptopy_i_netbooki.*";
     }
 
     @Override
     protected ParseStrategy getStrategy() {
-        return null;
+        return new KomputronikParseStrategy();
     }
 
 

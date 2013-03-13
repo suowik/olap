@@ -1,5 +1,6 @@
 package pl.edu.pk.olap.crawlers;
 
+import pl.edu.pk.olap.parsers.strategy.EuroParseStrategy;
 import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
 
 /**
@@ -19,7 +20,7 @@ public class EuroNotebookCrawler extends AbstractNotebookCrawler {
 
     @Override
     protected ParseStrategy getStrategy() {
-        return null;
+        return new EuroParseStrategy();
     }
 
 }

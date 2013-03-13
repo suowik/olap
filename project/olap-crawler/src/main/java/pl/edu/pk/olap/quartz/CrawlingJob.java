@@ -17,19 +17,20 @@ import java.util.concurrent.Executors;
  */
 public class CrawlingJob implements Job {
     private static final Logger LOGGER = Logger.getLogger(CrawlingJob.class);
+
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         LOGGER.info("START");
         ParsingContext context = new ParsingContext();
-        ExecutorService executor = Executors.newFixedThreadPool(6);
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        executor.execute(new MediaMarktRunner());
+        executor.execute(new SaturnRunner());
         executor.execute(new KomputronikRunner());
         executor.execute(new EuroRunner());
         executor.execute(new VobisRunner());
-        executor.execute(new MediaMarktRunner());
-        executor.execute(new SaturnRunner());
-        executor.execute(new XKomRunner());
+        //executor.execute(new XKomRunner());
         executor.shutdown();
-        while (!executor.isTerminated());
+        while (!executor.isTerminated()) ;
         context.clear();
         LOGGER.info("END");
     }

@@ -1,6 +1,7 @@
 package pl.edu.pk.olap.crawlers;
 
 import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
+import pl.edu.pk.olap.parsers.strategy.VobisParseStrategy;
 
 /**
  * User: Paweł
@@ -34,7 +35,7 @@ public class VobisNotebookCrawler extends AbstractNotebookCrawler {
 
     @Override
     protected ParseStrategy getStrategy() {
-        return null;
+        return new VobisParseStrategy();
     }
 
 }

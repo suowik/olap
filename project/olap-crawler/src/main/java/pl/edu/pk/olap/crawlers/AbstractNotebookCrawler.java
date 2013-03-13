@@ -48,8 +48,8 @@ abstract class AbstractNotebookCrawler extends WebCrawler {
         try {
             Computer computer = NotebookParser.parse(document, getStrategy());
             ParsingContext.add(computer);
+            LOGGER.info("ADDED: "+computer);
         } catch (DocumentParseException e) {
-            e.printStackTrace();
             LOGGER.warn("COULD NOT ADD COMPUTER DUE TO: "+e);
         }
     }

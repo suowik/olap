@@ -8,6 +8,8 @@ package pl.edu.pk.olap.utils;
 public class StringUtils {
     private StringUtils(){}
 
+    public static final String POLISH_LETTERS = "ąśćńźżółęĄŚĆŃŹÓŁĘ";
+
     public static boolean isAnyEmpty(String... words){
         for (String word : words) {
             if(isEmpty(word)){

@@ -12,23 +12,24 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 public class Computer implements Serializable {
-    private double price;
+    private int price;
     private String model;
-    private String os;
+    private String os = "Brak";
     private String cpu;
     private String ram;
-    private String hdd;
+    private String hdd = "SSD";
     private String screen;
+    private String graphics = "zintegrowana";
 
     public boolean isFilledCorrectly(){
-        return price != 0.0 && !StringUtils.isAnyEmpty(this.os,this.model,this.cpu,this.ram,this.hdd,this.screen);
+        return price != 0 && !StringUtils.isAnyEmpty(os,model,cpu,ram,graphics);
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -80,6 +81,14 @@ public class Computer implements Serializable {
         this.screen = screen;
     }
 
+    public String getGraphics() {
+        return graphics;
+    }
+
+    public void setGraphics(String graphics) {
+        this.graphics = graphics;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,8 +96,9 @@ public class Computer implements Serializable {
 
         Computer computer = (Computer) o;
 
-        if (Double.compare(computer.price, price) != 0) return false;
+        if (price != computer.price) return false;
         if (cpu != null ? !cpu.equals(computer.cpu) : computer.cpu != null) return false;
+        if (graphics != null ? !graphics.equals(computer.graphics) : computer.graphics != null) return false;
         if (hdd != null ? !hdd.equals(computer.hdd) : computer.hdd != null) return false;
         if (model != null ? !model.equals(computer.model) : computer.model != null) return false;
         if (os != null ? !os.equals(computer.os) : computer.os != null) return false;
@@ -100,16 +110,14 @@ public class Computer implements Serializable {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        temp = price != +0.0d ? Double.doubleToLongBits(price) : 0L;
-        result = (int) (temp ^ (temp >>> 32));
+        int result = price;
         result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + (os != null ? os.hashCode() : 0);
         result = 31 * result + (cpu != null ? cpu.hashCode() : 0);
         result = 31 * result + (ram != null ? ram.hashCode() : 0);
         result = 31 * result + (hdd != null ? hdd.hashCode() : 0);
         result = 31 * result + (screen != null ? screen.hashCode() : 0);
+        result = 31 * result + (graphics != null ? graphics.hashCode() : 0);
         return result;
     }
 
@@ -123,6 +131,8 @@ public class Computer implements Serializable {
                 ", ram='" + ram + '\'' +
                 ", hdd='" + hdd + '\'' +
                 ", screen='" + screen + '\'' +
+                ", graphics='" + graphics + '\'' +
                 '}';
     }
 }
+
