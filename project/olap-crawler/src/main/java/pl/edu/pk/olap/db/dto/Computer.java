@@ -20,6 +20,7 @@ public class Computer implements Serializable {
     private String hdd = "SSD";
     private String screen;
     private String graphics = "zintegrowana";
+    private Long timestamp;
 
     public Computer(int price, String model, String os, String cpu, String ram, String hdd, String screen, String graphics) {
         this.price = price;
@@ -101,6 +102,14 @@ public class Computer implements Serializable {
 
     public void setGraphics(String graphics) {
         this.graphics = graphics;
+    }
+
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

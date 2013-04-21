@@ -17,7 +17,7 @@ import java.util.List;
 public class ComputerManager implements AccessManager<Computer> {
 
     private static final Logger LOGGER = Logger.getLogger(ComputerManager.class);
-    private final static String INSERT = "INSERT INTO Computers(price,cpu,graphics,screen,hdd,model,os,ram) VALUES(?,?,?,?,?,?,?,?)";
+    private final static String INSERT = "INSERT INTO Computers(price,cpu,graphics,screen,hdd,model,os,ram,timestamp) VALUES(?,?,?,?,?,?,?,?,?)";
 
     @Override
     public void insertAll(List<Computer> entities) {
@@ -70,6 +70,7 @@ public class ComputerManager implements AccessManager<Computer> {
         statement.setString(6,entity.getModel());
         statement.setString(7,entity.getOs());
         statement.setString(8,entity.getRam());
+        statement.setLong(9,entity.getTimestamp());
         statement.execute();
     }
 }

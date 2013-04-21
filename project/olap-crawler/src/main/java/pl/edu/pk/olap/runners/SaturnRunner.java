@@ -3,6 +3,8 @@ package pl.edu.pk.olap.runners;
 import pl.edu.pk.olap.crawlers.SaturnNotebookCrawler;
 import pl.edu.pk.olap.crawlers.controller.CrawlerController;
 
+import java.util.Random;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Paweł
@@ -13,7 +15,7 @@ import pl.edu.pk.olap.crawlers.controller.CrawlerController;
 public class SaturnRunner implements Runnable {
     @Override
     public void run() {
-        CrawlerController crawlerController = new CrawlerController(40, "saturn/",100000, CrawlerController.ONE_SEC/5);
+        CrawlerController crawlerController = new CrawlerController(40, "saturn/"+new Random().nextInt(),100000, CrawlerController.ONE_SEC/5);
         crawlerController.crawl(SaturnNotebookCrawler.class,SaturnNotebookCrawler.LINKS);
     }
 }

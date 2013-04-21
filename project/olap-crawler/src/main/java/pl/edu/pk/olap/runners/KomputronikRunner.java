@@ -3,6 +3,8 @@ package pl.edu.pk.olap.runners;
 import pl.edu.pk.olap.crawlers.KomputronikNotebookCrawler;
 import pl.edu.pk.olap.crawlers.controller.CrawlerController;
 
+import java.util.Random;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Paweł
@@ -13,7 +15,7 @@ import pl.edu.pk.olap.crawlers.controller.CrawlerController;
 public class KomputronikRunner implements Runnable {
     @Override
     public void run() {
-        CrawlerController crawlerController = new CrawlerController(40, "komputronik/",100000, CrawlerController.ONE_SEC/2);
+        CrawlerController crawlerController = new CrawlerController(40, "komputronik/"+new Random().nextInt(),100000, CrawlerController.ONE_SEC/2);
         crawlerController.crawl(KomputronikNotebookCrawler.class, KomputronikNotebookCrawler.LINKS);
     }
 }

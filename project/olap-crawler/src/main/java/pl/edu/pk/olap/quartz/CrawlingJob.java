@@ -10,6 +10,9 @@ import pl.edu.pk.olap.db.dao.ComputerManagerFactory;
 import pl.edu.pk.olap.db.dto.Computer;
 import pl.edu.pk.olap.runners.*;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -25,7 +28,7 @@ public class CrawlingJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         LOGGER.info("START");
         ParsingContext context = new ParsingContext();
-        ExecutorService executor = Executors.newFixedThreadPool(4);
+        ExecutorService executor = Executors.newFixedThreadPool(5);
         executor.execute(new MediaMarktRunner());
         executor.execute(new SaturnRunner());
         executor.execute(new KomputronikRunner());
@@ -34,10 +37,18 @@ public class CrawlingJob implements Job {
         //executor.execute(new XKomRunner());
         executor.shutdown();
         while (!executor.isTerminated()) ;
-        LOGGER.info("INSERTING DATA TO DB: "+ ParsingContext.getAll().size());
+        LOGGER.info("INSERTING DATA TO DB SIZE["+ ParsingContext.getAll().size()+"]");
         AccessManager<Computer> accessManager = ComputerManagerFactory.create();
-        accessManager.insertAll(ParsingContext.getAll());
+        accessManager.insertAll(updateTime(ParsingContext.getAll()));
         context.clear();
         LOGGER.info("END");
+    }
+
+    private ArrayList<Computer> updateTime(List<Computer> entities) {
+        Long timestamp = new Date().getTime();
+        for (Computer entity : entities) {
+            entity.setTimestamp(timestamp);
+        }
+        return new ArrayList<Computer>(entities);
     }
 }
