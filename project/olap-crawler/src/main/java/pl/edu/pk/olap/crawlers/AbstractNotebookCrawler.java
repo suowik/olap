@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import pl.edu.pk.olap.context.ParsingContext;
-import pl.edu.pk.olap.dto.Computer;
+import pl.edu.pk.olap.db.dto.Computer;
 import pl.edu.pk.olap.exceptions.DocumentParseException;
 import pl.edu.pk.olap.parsers.NotebookParser;
 import pl.edu.pk.olap.parsers.strategy.ParseStrategy;

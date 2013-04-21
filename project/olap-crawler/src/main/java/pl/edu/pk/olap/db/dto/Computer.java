@@ -1,4 +1,4 @@
-package pl.edu.pk.olap.dto;
+package pl.edu.pk.olap.db.dto;
 
 import pl.edu.pk.olap.utils.StringUtils;
 
@@ -20,6 +20,20 @@ public class Computer implements Serializable {
     private String hdd = "SSD";
     private String screen;
     private String graphics = "zintegrowana";
+
+    public Computer(int price, String model, String os, String cpu, String ram, String hdd, String screen, String graphics) {
+        this.price = price;
+        this.model = model;
+        this.os = os;
+        this.cpu = cpu;
+        this.ram = ram;
+        this.hdd = hdd;
+        this.screen = screen;
+        this.graphics = graphics;
+    }
+
+    public Computer() {
+    }
 
     public boolean isFilledCorrectly(){
         return price != 0 && !StringUtils.isAnyEmpty(os,model,cpu,ram,graphics);

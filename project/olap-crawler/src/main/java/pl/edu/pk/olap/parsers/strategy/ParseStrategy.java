@@ -1,7 +1,7 @@
 package pl.edu.pk.olap.parsers.strategy;
 
 import org.jsoup.nodes.Document;
-import pl.edu.pk.olap.dto.Computer;
+import pl.edu.pk.olap.db.dto.Computer;
 
 /**
  * User: Paweł

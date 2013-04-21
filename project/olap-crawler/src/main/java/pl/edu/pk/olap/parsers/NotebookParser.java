@@ -1,7 +1,7 @@
 package pl.edu.pk.olap.parsers;
 
 import org.jsoup.nodes.Document;
-import pl.edu.pk.olap.dto.Computer;
+import pl.edu.pk.olap.db.dto.Computer;
 import pl.edu.pk.olap.exceptions.DocumentParseException;
 import pl.edu.pk.olap.parsers.strategy.ParseStrategy;
 

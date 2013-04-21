@@ -2,7 +2,7 @@ package pl.edu.pk.olap.parsers.strategy;
 
 import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
-import pl.edu.pk.olap.dto.Computer;
+import pl.edu.pk.olap.db.dto.Computer;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

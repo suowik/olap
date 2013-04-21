@@ -1,6 +1,6 @@
 package pl.edu.pk.olap.context;
 
-import pl.edu.pk.olap.dto.Computer;
+import pl.edu.pk.olap.db.dto.Computer;
 
 import java.util.ArrayList;
 import java.util.Collections;

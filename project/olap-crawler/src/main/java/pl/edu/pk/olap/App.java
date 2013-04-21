@@ -16,7 +16,7 @@ public class App {
                                             .withIdentity("CrawlingTrigger","group1")
                                             .withSchedule(SimpleScheduleBuilder
                                                             .simpleSchedule()
-                                                            .withIntervalInHours(2).repeatForever())
+                                                            .withIntervalInHours(2).withRepeatCount(1))
                                             .build();
             Scheduler scheduler = new StdSchedulerFactory().getScheduler();
             scheduler.start();

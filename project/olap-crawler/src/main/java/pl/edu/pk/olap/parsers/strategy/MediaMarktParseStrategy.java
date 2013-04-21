@@ -3,7 +3,7 @@ package pl.edu.pk.olap.parsers.strategy;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import pl.edu.pk.olap.dto.Computer;
+import pl.edu.pk.olap.db.dto.Computer;
 
 /**
  * User: Paweł
