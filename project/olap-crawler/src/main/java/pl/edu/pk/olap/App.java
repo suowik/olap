@@ -15,7 +15,9 @@ public class App {
                                             .startNow()
                                             .withIdentity("CrawlingTrigger","group1")
                                             .withSchedule(SimpleScheduleBuilder
-                                                            .simpleSchedule().withIntervalInHours(2).withRepeatCount(1))
+                                                            .simpleSchedule()
+                                                            .withIntervalInHours(2)
+                                                            .withRepeatCount(1))
                                             .build();
             Scheduler scheduler = new StdSchedulerFactory().getScheduler();
             scheduler.start();

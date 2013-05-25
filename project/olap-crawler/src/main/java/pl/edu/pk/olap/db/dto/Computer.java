@@ -21,8 +21,21 @@ public class Computer implements Serializable {
     private String screen;
     private String graphics = "zintegrowana";
     private Long timestamp;
+    private String source;
 
-    public Computer(int price, String model, String os, String cpu, String ram, String hdd, String screen, String graphics) {
+    public enum Source {
+        EURO_RTV_AGD("euro"),KOMPUTRONIK("komputronik"),MEDIA_MARKT("media_markt"),SATURN("saturn"),VOBIS("vobis");
+        private String name;
+        Source(String name){
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    public Computer(int price, String model, String os, String cpu, String ram, String hdd, String screen, String graphics, String source) {
         this.price = price;
         this.model = model;
         this.os = os;
@@ -31,6 +44,7 @@ public class Computer implements Serializable {
         this.hdd = hdd;
         this.screen = screen;
         this.graphics = graphics;
+        this.source = source;
     }
 
     public Computer() {
@@ -112,6 +126,14 @@ public class Computer implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(Source source) {
+        this.source = source.getName();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -127,6 +149,8 @@ public class Computer implements Serializable {
         if (os != null ? !os.equals(computer.os) : computer.os != null) return false;
         if (ram != null ? !ram.equals(computer.ram) : computer.ram != null) return false;
         if (screen != null ? !screen.equals(computer.screen) : computer.screen != null) return false;
+        if (source != null ? !source.equals(computer.source) : computer.source != null) return false;
+        if (timestamp != null ? !timestamp.equals(computer.timestamp) : computer.timestamp != null) return false;
 
         return true;
     }
@@ -141,6 +165,8 @@ public class Computer implements Serializable {
         result = 31 * result + (hdd != null ? hdd.hashCode() : 0);
         result = 31 * result + (screen != null ? screen.hashCode() : 0);
         result = 31 * result + (graphics != null ? graphics.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (source != null ? source.hashCode() : 0);
         return result;
     }
 
@@ -155,6 +181,8 @@ public class Computer implements Serializable {
                 ", hdd='" + hdd + '\'' +
                 ", screen='" + screen + '\'' +
                 ", graphics='" + graphics + '\'' +
+                ", timestamp=" + timestamp +
+                ", source='" + source + '\'' +
                 '}';
     }
 }

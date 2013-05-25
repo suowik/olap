@@ -18,6 +18,7 @@ public class EuroParseStrategy implements ParseStrategy {
     public void parse(Document document, Computer computer) {
         computer.setPrice(parsePrice(document));
         computer.setModel(parseModel(document));
+        computer.setSource(Computer.Source.EURO_RTV_AGD);
         Elements rows = document.getElementById("basic_tech_details").getElementsByTag("tr");
         for (Element tr : rows) {
             if (ParseUtils.contains(tr, "Procesor")) {

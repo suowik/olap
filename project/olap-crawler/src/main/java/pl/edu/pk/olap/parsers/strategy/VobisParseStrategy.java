@@ -19,6 +19,7 @@ public class VobisParseStrategy implements ParseStrategy {
     public void parse(Document document, Computer computer) {
         computer.setPrice(parsePrice(document));
         computer.setModel(parseModel(document));
+        computer.setSource(Computer.Source.VOBIS);
         Elements trs = document.getElementById("tab-02").getElementsByTag("table").get(0).getElementsByTag("tbody").get(0).getElementsByTag("tr");
         for (Element tr : trs) {
             if(ParseUtils.contains(tr,"System operacyjny")){

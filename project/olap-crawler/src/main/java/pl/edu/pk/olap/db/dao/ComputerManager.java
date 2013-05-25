@@ -17,7 +17,7 @@ import java.util.List;
 public class ComputerManager implements AccessManager<Computer> {
 
     private static final Logger LOGGER = Logger.getLogger(ComputerManager.class);
-    private final static String INSERT = "INSERT INTO Computers(price,cpu,graphics,screen,hdd,model,os,ram,timestamp) VALUES(?,?,?,?,?,?,?,?,?)";
+    private final static String INSERT = "INSERT INTO Computers(price,cpu,graphics,screen,hdd,model,os,ram,source,timestamp) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
     @Override
     public void insertAll(List<Computer> entities) {
@@ -34,9 +34,8 @@ public class ComputerManager implements AccessManager<Computer> {
     private void addAll(Connection connection, List<Computer> entities) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(INSERT);
         for (Computer entity : entities) {
-            insert(statement, entity);
+            insert(statement, entity,connection);
         }
-        connection.commit();
     }
 
     private void gentlyClose(Connection connection) {
@@ -52,7 +51,7 @@ public class ComputerManager implements AccessManager<Computer> {
         Connection connection = ConnectionResolver.getConnection();
         try {
             PreparedStatement statement = connection.prepareStatement(INSERT);
-            insert(statement,entity);
+            insert(statement,entity,connection);
             connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +60,7 @@ public class ComputerManager implements AccessManager<Computer> {
         }
     }
 
-    private void insert(PreparedStatement statement, Computer entity) throws SQLException {
+    private void insert(PreparedStatement statement, Computer entity, Connection connection) throws SQLException {
         statement.setInt(1,entity.getPrice());
         statement.setString(2,entity.getCpu());
         statement.setString(3,entity.getGraphics());
@@ -70,7 +69,9 @@ public class ComputerManager implements AccessManager<Computer> {
         statement.setString(6,entity.getModel());
         statement.setString(7,entity.getOs());
         statement.setString(8,entity.getRam());
-        statement.setLong(9,entity.getTimestamp());
+        statement.setString(9,entity.getSource());
+        statement.setLong(10,entity.getTimestamp());
         statement.execute();
+        connection.commit();
     }
 }

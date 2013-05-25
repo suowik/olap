@@ -19,6 +19,7 @@ public class KomputronikParseStrategy implements ParseStrategy {
     public void parse(Document document, Computer computer) {
         computer.setPrice(parsePrice(document));
         computer.setModel(parseModel(document));
+        computer.setSource(Computer.Source.KOMPUTRONIK);
         Elements trs = document.getElementsByClass("specification").get(0).getElementsByTag("tr");
         for (Element tr : trs) {
             if(ParseUtils.contains(tr,"zainstalowany system operacyjny")){

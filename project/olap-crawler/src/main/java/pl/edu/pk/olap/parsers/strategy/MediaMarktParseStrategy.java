@@ -18,6 +18,7 @@ public class MediaMarktParseStrategy implements ParseStrategy {
     public void parse(Document document, Computer computer) {
         computer.setPrice(PriceExtractor.parse(document));
         computer.setModel(extractModel(document));
+        computer.setSource(Computer.Source.MEDIA_MARKT);
         Elements techData = document.getElementsByClass(TABLE_NAME);
         for (Element table : techData) {
             Elements tBody = table.children();
